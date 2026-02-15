@@ -19,7 +19,7 @@ function unlockAllLevels() {
     newState();
   }
 }
-
+game.load.crossOrigin = 'anonymous';
 function addFocusAndDesktopDetection() {
   game.input.onDown.add(function(e) {
     if (e.isMouse) {
