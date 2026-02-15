@@ -4033,8 +4033,10 @@ function() {
     var a = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABAQMAAADD8p2OAAAAA1BMVEX/",
       c = "AAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==",
       d = new Image;
+      d.crossOrigin = "anonymous",
     d.src = a + "AP804Oa6" + c;
     var e = new Image;
+    e.crossOrigin = "anonymous",
     e.src = a + "/wCKxvRF" + c;
     var f = b.CanvasPool.create(this, 6, 1),
       g = f.getContext("2d");
@@ -4652,7 +4654,7 @@ function() {
     }
   }, b.RenderTexture.prototype.getImage = function() {
     var a = new Image;
-    return a.src = this.getBase64(), a
+    return a.crossOrigin = "anonymous", a.src = this.getBase64(), a
   }, b.RenderTexture.prototype.getBase64 = function() {
     return this.getCanvas().toDataURL()
   }, b.RenderTexture.prototype.getCanvas = function() {
@@ -9082,6 +9084,7 @@ function() {
       },
       generateTexture: function(a) {
         var b = new Image;
+        b.crossOrigin = "anonymous",
         b.src = this.canvas.toDataURL("image/png");
         var c = this.game.cache.addImage(a, "", b);
         return new PIXI.Texture(c.base)
@@ -12184,7 +12187,7 @@ function() {
         bitmapFont: {},
         shader: {},
         renderTexture: {}
-      }, this._urlMap = {}, this._urlResolver = new Image, this._urlTemp = null, this.onSoundUnlock = new c.Signal, this._cacheMap = [], this._cacheMap[c.Cache.CANVAS] = this._cache.canvas, this._cacheMap[c.Cache.IMAGE] = this._cache.image, this._cacheMap[c.Cache.TEXTURE] = this._cache.texture, this._cacheMap[c.Cache.SOUND] = this._cache.sound, this._cacheMap[c.Cache.TEXT] = this._cache.text, this._cacheMap[c.Cache.PHYSICS] = this._cache.physics, this._cacheMap[c.Cache.TILEMAP] = this._cache.tilemap, this._cacheMap[c.Cache.BINARY] = this._cache.binary, this._cacheMap[c.Cache.BITMAPDATA] = this._cache.bitmapData, this._cacheMap[c.Cache.BITMAPFONT] = this._cache.bitmapFont, this._cacheMap[c.Cache.JSON] = this._cache.json, this._cacheMap[c.Cache.XML] = this._cache.xml, this._cacheMap[c.Cache.VIDEO] = this._cache.video, this._cacheMap[c.Cache.SHADER] = this._cache.shader, this._cacheMap[c.Cache.RENDER_TEXTURE] = this._cache.renderTexture, this.addDefaultImage(), this.addMissingImage()
+      }, this._urlMap = {}, this._urlResolver = new Image, this._urlResolver.crossOrigin = "anonymous", this._urlTemp = null, this.onSoundUnlock = new c.Signal, this._cacheMap = [], this._cacheMap[c.Cache.CANVAS] = this._cache.canvas, this._cacheMap[c.Cache.IMAGE] = this._cache.image, this._cacheMap[c.Cache.TEXTURE] = this._cache.texture, this._cacheMap[c.Cache.SOUND] = this._cache.sound, this._cacheMap[c.Cache.TEXT] = this._cache.text, this._cacheMap[c.Cache.PHYSICS] = this._cache.physics, this._cacheMap[c.Cache.TILEMAP] = this._cache.tilemap, this._cacheMap[c.Cache.BINARY] = this._cache.binary, this._cacheMap[c.Cache.BITMAPDATA] = this._cache.bitmapData, this._cacheMap[c.Cache.BITMAPFONT] = this._cache.bitmapFont, this._cacheMap[c.Cache.JSON] = this._cache.json, this._cacheMap[c.Cache.XML] = this._cache.xml, this._cacheMap[c.Cache.VIDEO] = this._cache.video, this._cacheMap[c.Cache.SHADER] = this._cache.shader, this._cacheMap[c.Cache.RENDER_TEXTURE] = this._cache.renderTexture, this.addDefaultImage(), this.addMissingImage()
     }, c.Cache.CANVAS = 1, c.Cache.IMAGE = 2, c.Cache.TEXTURE = 3, c.Cache.SOUND = 4, c.Cache.TEXT = 5, c.Cache.PHYSICS = 6, c.Cache.TILEMAP = 7, c.Cache.BINARY = 8, c.Cache.BITMAPDATA = 9, c.Cache.BITMAPFONT = 10, c.Cache.JSON = 11, c.Cache.XML = 12, c.Cache.VIDEO = 13, c.Cache.SHADER = 14, c.Cache.RENDER_TEXTURE = 15, c.Cache.DEFAULT = null, c.Cache.MISSING = null, c.Cache.prototype = {
       addCanvas: function(a, b, c) {
         void 0 === c && (c = b.getContext("2d")), this._cache.canvas[a] = {
@@ -12206,12 +12209,14 @@ function() {
       },
       addDefaultImage: function() {
         var a = new Image;
+        a.crossOrigin = "anonymous",
         a.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAABVJREFUeF7NwIEAAAAAgKD9qdeocAMAoAABm3DkcAAAAABJRU5ErkJggg==";
         var b = this.addImage("__default", null, a);
         b.base.skipRender = !0, c.Cache.DEFAULT = new PIXI.Texture(b.base)
       },
       addMissingImage: function() {
         var a = new Image;
+        a.crossOrigin = "anonymous",
         a.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJ9JREFUeNq01ssOwyAMRFG46v//Mt1ESmgh+DFmE2GPOBARKb2NVjo+17PXLD8a1+pl5+A+wSgFygymWYHBb0FtsKhJDdZlncG2IzJ4ayoMDv20wTmSMzClEgbWYNTAkQ0Z+OJ+A/eWnAaR9+oxCF4Os0H8htsMUp+pwcgBBiMNnAwF8GqIgL2hAzaGFFgZauDPKABmowZ4GL369/0rwACp2yA/ttmvsQAAAABJRU5ErkJggg==";
         var b = this.addImage("__missing", null, a);
         c.Cache.MISSING = new PIXI.Texture(b.base)
