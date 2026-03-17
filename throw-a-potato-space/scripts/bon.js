@@ -2115,12 +2115,13 @@ self.JobSchedulerDOM = class {
       ? this._runtimeInterface.GetScriptFolder()
       : "";
   }
+  _GetWorkerUrl(filename) {
+    return "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/throw-a-potato-space/scripts/" + filename;
+  }
   async Init() {
     if (this._hasInitialised) throw Error("already initialised");
     this._hasInitialised = !0;
-    var a = this._runtimeInterface._GetWorkerURL(
-      this._GetWorkerScriptFolder() + "dispatchworker.js",
-    );
+    var a = this._GetWorkerUrl("dispatchworker.js");
     this._dispatchWorker = await this._runtimeInterface.CreateWorker(
       a,
       this._baseUrl,
@@ -2135,9 +2136,7 @@ self.JobSchedulerDOM = class {
   }
   async _CreateJobWorker() {
     const a = this._jobWorkers.length;
-    var b = this._runtimeInterface._GetWorkerURL(
-      this._GetWorkerScriptFolder() + "jobworker.js",
-    );
+    var b = this._GetWorkerUrl("jobworker.js");
     b = await this._runtimeInterface.CreateWorker(b, this._baseUrl, {
       name: "JobWorker" + a,
     });
