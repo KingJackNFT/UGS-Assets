@@ -1230,6 +1230,7 @@
         return function(e) {
           return ce(), new Promise(function(r, t) {
             var i = new Image;
+            i.crossOrigin = "annonymous";
             i.onload = function() {
               de(), fe[e] = i, r(i)
             }, i.onerror = function() {
